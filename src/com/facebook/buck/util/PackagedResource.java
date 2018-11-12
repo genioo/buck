@@ -97,9 +97,8 @@ public class PackagedResource implements Supplier<Path> {
               .resolve(relativeTo.getCanonicalName())
               .resolve(filename);
 
-      // If the path already exists, delete it.
       if (filesystem.exists(outputPath)) {
-        filesystem.deleteRecursivelyIfExists(outputPath);
+        return outputPath;
       }
 
       String extension = com.google.common.io.Files.getFileExtension(filename.toString());
